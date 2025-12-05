@@ -111,6 +111,8 @@ void drawSelectionBox(CBox selectionBox, float alpha) {
 	static const auto c_should_round = ConfigValue<Hyprlang::INT>("plugin:hyprselect:should_round");
 	static const auto c_col_main = ConfigValue<Hyprlang::INT>("plugin:hyprselect:col.main");
 	static const auto c_col_border = ConfigValue<Hyprlang::INT>("plugin:hyprselect:col.border");
+	static const auto c_should_blur = ConfigValue<Hyprlang::INT>("plugin:hyprselect:should_blur");
+	static const auto c_blur_power = ConfigValue<Hyprlang::FLOAT>("plugin:hyprselect:blur_power");
 	static const auto c_rounding = ConfigValue<Hyprlang::FLOAT>("plugin:hyprselect:rounding");
 	static const auto c_rounding_power = ConfigValue<Hyprlang::FLOAT>("plugin:hyprselect:rounding_power");
 	static const auto c_border_size = ConfigValue<Hyprlang::FLOAT>("plugin:hyprselect:border_size");
@@ -141,7 +143,7 @@ void drawSelectionBox(CBox selectionBox, float alpha) {
 
     CHyprColor mainCol = *c_col_main;
     mainCol.a *= alpha;
-    drawRect(selectionBox, mainCol, rounding, roundingPower, false, 1.0f);
+    drawRect(selectionBox, mainCol, rounding, roundingPower, *c_should_blur, *c_blur_power);
 
     auto borderBox = selectionBox;
     auto borderSize = std::floor(1.1f * m->m_scale);
@@ -168,6 +170,8 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprselect:col.main", Hyprlang::CConfigValue((Hyprlang::INT) CHyprColor(0, .52, .9, 0.25).getAsHex()));
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprselect:col.border", Hyprlang::CConfigValue((Hyprlang::INT) CHyprColor(0, .52, .9, 1.0).getAsHex()));
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprselect:should_blur", Hyprlang::CConfigValue((Hyprlang::INT) 0.0));
+    HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprselect:blur_power", Hyprlang::CConfigValue((Hyprlang::FLOAT) 1.0));
+    
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprselect:border_size", Hyprlang::CConfigValue((Hyprlang::FLOAT) -1.0));
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprselect:rounding", Hyprlang::CConfigValue((Hyprlang::FLOAT) 6.0));
     HyprlandAPI::addConfigValue(PHANDLE, "plugin:hyprselect:rounding_power", Hyprlang::CConfigValue((Hyprlang::FLOAT) 2.0));
