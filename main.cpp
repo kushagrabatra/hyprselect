@@ -199,14 +199,16 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
                     mouseAtStart = mouse;
                 }
             } else { // released
-                drawSelection = false;
-                FadingBox fbox;
-                fbox.box = rect(mouseAtStart, mouse);
-                fbox.creation_time = get_current_time_in_ms();
-                fadingBoxes.push_back(fbox);
-                    
-                for (auto m : g_pCompositor->m_monitors)
-                    g_pHyprRenderer->damageMonitor(m);
+                if (drawSelection) {
+                    drawSelection = false;
+                    FadingBox fbox;
+                    fbox.box = rect(mouseAtStart, mouse);
+                    fbox.creation_time = get_current_time_in_ms();
+                    fadingBoxes.push_back(fbox);
+                        
+                    for (auto m : g_pCompositor->m_monitors)
+                        g_pHyprRenderer->damageMonitor(m);
+                }
             }
         }
     });
