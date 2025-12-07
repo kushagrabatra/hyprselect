@@ -191,10 +191,36 @@ APICALL EXPORT PLUGIN_DESCRIPTION_INFO PLUGIN_INIT(HANDLE handle) {
     static auto mouseButton = HyprlandAPI::registerCallbackDynamic(PHANDLE, "mouseButton", [](void* self, SCallbackInfo& info, std::any data) {
         auto e = std::any_cast<IPointer::SButtonEvent>(data);
         auto mouse = g_pInputManager->getMouseCoordsInternal();
+        auto m = g_pCompositor->getMonitorFromCursor();
+        
         if (e.button == BTN_LEFT) {
-            if (e.state) { // clicked
-                auto intersectedWindow = g_pCompositor->vectorToWindowUnified(mouse, RESERVED_EXTENTS | INPUT_EXTENTS | ALLOW_FLOATING);
-                if (!intersectedWindow) {
+            if (e.state) { 
+                bool intersected = false; 
+                { // against clients
+                    auto intersectedWindow = g_pCompositor->vectorToWindowUnified(mouse, RESERVED_EXTENTS | INPUT_EXTENTS | ALLOW_FLOATING);
+                    if (intersectedWindow)
+                        intersected = true;
+                    }
+                { // against layers
+                    for (auto& lsl : m->m_layerSurfaceLayers | std::views::reverse) {
+                        Vector2D surfaceCoords;
+                        PHLLS pFoundLayerSurface;
+                        auto foundSurface = g_pCompositor->vectorToLayerSurface(mouse, &lsl, &surfaceCoords, &pFoundLayerSurface, false);
+                        if (foundSurface)
+                            intersected = true;
+                    }
+                }
+                { // against popups
+                    Vector2D surfaceCoords;
+                    PHLLS pFoundLayerSurface;
+                    auto foundSurface =
+                        g_pCompositor->vectorToLayerPopupSurface(
+                            mouse, m, &surfaceCoords, &pFoundLayerSurface);
+                    if (foundSurface)
+                        intersected = true;
+                }
+                        
+                if (!intersected) {
                     drawSelection = true;
                     mouseAtStart = mouse;
                 }
